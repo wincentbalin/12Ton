@@ -4,7 +4,7 @@
 
 # Implementation
 
-!12Ton was implemented using Turbo Pascal 7. It needs `graph.tpu` and `egavga.obj`. You can create thee latter one using
+!12Ton was implemented using Turbo Pascal 7. It needs `graph.tpu` and `egavga.obj`. You can create the latter one using
 
 ```
 binobj egavga.bgi egavga.obj grvtrb

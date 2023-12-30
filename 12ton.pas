@@ -325,7 +325,10 @@ var hv:string;
     dum,p:longint;
     reg:registers;
     dat:text;
+    dat1:text;
     sd:searchrec;
+	
+	s1: string;
 
 
 begin
@@ -336,27 +339,35 @@ begin
   fehler:=true;exit end;}
  assign(dat,'12TON.MIZ');
  reset(dat);
+ assign(dat1, 'file.txt');
+ rewrite(dat1);
  vm:=0;hv:=lescodz(dat);
  repeat
   inc(vm);
   va:=1;menu[vm,va].e:=hv;
-  repeat inc(va);hv:=lescodz(dat);menu[vm,va].e:=hv;until hv='';
+  writeln(dat1, 'menu');
+  str(vm, s1); write(dat1, 'vm: '); writeln(dat1, s1);
+  str(va, s1); write(dat1, 'va: '); writeln(dat1, s1);
+  write(dat1, 'e=hv: '); writeln(dat1, hv);
+  repeat inc(va);hv:=lescodz(dat);menu[vm,va].e:=hv;writeln(dat1, 'menu');str(vm, s1); write(dat1, 'vm: '); writeln(dat1, s1);str(va, s1); write(dat1, 'va: '); writeln(dat1, s1);write(dat1, 'e=hv: '); writeln(dat1, hv);until hv='';
   va:=0;
-  repeat inc(va);hv:=lescodz(dat);menu[vm,va].ht:=hv;until hv='';
+  repeat inc(va);hv:=lescodz(dat);menu[vm,va].ht:=hv;writeln(dat1, 'menu');str(vm, s1); write(dat1, 'vm: '); writeln(dat1, s1);str(va, s1); write(dat1, 'va: '); writeln(dat1, s1);write(dat1, 'ht=hv: '); writeln(dat1, hv);until hv='';
   va:=0;
   repeat inc(va);hv:=lescodz(dat);val(hv,p,q);
-         if q=0 then menu[vm,va].o:=p;until q<>0;
+         if q=0 then menu[vm,va].o:=p;writeln(dat1, 'menu');str(vm, s1); write(dat1, 'vm: '); writeln(dat1, s1);str(va, s1); write(dat1, 'va: '); writeln(dat1, s1);write(dat1, 'o=val(hv): '); writeln(dat1, hv);until q<>0;
  until hv='';
  va:=0;
- repeat inc(va);hv:=lescodz(dat);mlmenu[va].e:=hv;until hv='';
+ repeat inc(va);hv:=lescodz(dat);mlmenu[va].e:=hv;writeln(dat1, 'mlmenu');str(va, s1); write(dat1, 'va: '); writeln(dat1, s1);write(dat1, 'e=val(hv): '); writeln(dat1, hv);until hv='';
  va:=0;
  repeat inc(va);hv:=lescodz(dat);val(hv,p,q);
-        if q=0 then mlmenu[va].o1:=p;until q<>0;
+        if q=0 then mlmenu[va].o1:=p;writeln(dat1, 'mlmenu');str(va, s1); write(dat1, 'va: '); writeln(dat1, s1);write(dat1, 'o1=val(hv): '); writeln(dat1, hv);until q<>0;
  va:=0;
  repeat inc(va);hv:=lescodz(dat);val(hv,p,q);
-        if q=0 then mlmenu[va].o2:=p;until q<>0;
+        if q=0 then mlmenu[va].o2:=p;writeln(dat1, 'mlmenu');str(va, s1); write(dat1, 'va: '); writeln(dat1, s1);write(dat1, 'o2=val(hv): '); writeln(dat1, hv);until q<>0;
  for va:=0 to 17 do intinf[va]:=lescodz(dat);
+ for va:=0 to 17 do begin writeln(dat1, 'infinf');str(va, s1); write(dat1, 'va: '); writeln(dat1, s1); write(dat1, 'value: '); writeln(dat1, intinf[va]); end;
  close(dat);dateinam:=intinf[4];
+ close(dat1);
 { for va:=0 to 1 do begin
   findfirst(intinf[16-va*2],anyfile,sd);
   val(intinf[17-va*2],p,q);

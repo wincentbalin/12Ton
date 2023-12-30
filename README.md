@@ -10,10 +10,10 @@
 binobj egavga.bgi egavga.obj grvtrb
 ```
 
-The software was originally a shareware and `codier.pas` was used to create the file `12ton.miz` from `_12ton.mi` and to put the license holder information therein.
+The software was originally a shareware and `codier.pas` was used to create the file `12ton.miz` from `_12ton.mi` and to put the license holder information therein. Now all these files were removed, as a software in public domain does not need them anymore.
 
 # License
 
-[Unlicense](LICENSE)
+The software was developed by Matthias Kleinmann in the nineties and distributed as a shareware. As of 2023, the author put the software into public domain, as stated in an e-mail conversation. More information in [Unlicense](LICENSE).
 
 

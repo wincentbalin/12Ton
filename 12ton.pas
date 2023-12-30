@@ -322,13 +322,8 @@ end;
 procedure einricht;
 var hv:string;
     vm,va,q:integer;
-    dum,p:longint;
+    p:longint;
     reg:registers;
-    dat:text;
-    dat1:text;
-    sd:searchrec;
-	
-	s1: string;
 
 
 begin

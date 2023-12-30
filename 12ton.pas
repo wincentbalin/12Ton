@@ -325,7 +325,6 @@ var hv:string;
     p:longint;
     reg:registers;
 
-
 begin
  fehler:=false;bv:='C';
   menu[1,1].e:='Eingeben';
@@ -382,10 +381,10 @@ begin
   mlmenu[2].o2:=30;
   mlmenu[3].o2:=31;
   mlmenu[4].o2:=0;
-  intinf[0]:='Autor und Inhaber der Urheberrechte:';
-  intinf[1]:='Matthias Kleinmann';
-  intinf[2]:='';
-  intinf[3]:='';
+  intinf[0]:='Maintainer:';
+  intinf[1]:='Wincent Balin';
+  intinf[2]:='https://github.com/wincentbalin/12Ton';
+  intinf[3]:='Dieses Programm ist in Public Domain.';
   intinf[4]:='!12Ton.DAT';
   intinf[5]:='FÅr MenÅ ALT drÅcken';
   intinf[6]:='Ich hoffe, ich konnte Ihnen weiterhelfen!';
@@ -482,7 +481,7 @@ begin
  end;
  closegraph;writeln;mem[0:1047]:=160;
  if fehler then begin
-  writeln('Bitte wenden Sie sich an den Autor:');
+  writeln('Bitte wenden Sie sich an den Maintainer:');
   writeln('  ',intinf[1]);
   writeln('  ',intinf[2]);
   writeln('  ',intinf[3]);

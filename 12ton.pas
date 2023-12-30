@@ -337,11 +337,85 @@ begin
  if doserror<>0 then begin
   writeln('!12TON.MIZ fehlt!');
   fehler:=true;exit end;}
- assign(dat,'12TON.MIZ');
+  menu[1,1].e:='Eingeben';
+  menu[1,2].e:='AuswÑhlen';
+  menu[1,3].e:='Verwandte Suchen...';
+  menu[1,4].e:='Kontrollieren';
+  menu[1,5].e:='';
+  menu[1,1].ht:='Eingeben einer neuen Grundreihe (fÅr die Darstellung in den Perspektiven).';
+  menu[1,2].ht:='Aus den Perspektiven eine neue Grundreihe auswÑhlen.';
+  menu[1,3].ht:='Die x-te Reihe mit Ñhnlichem Anfang suchen.';
+  menu[1,4].ht:='Kontrolle von Zwîlfton-Reihen auf Richtigkeit';
+  menu[1,5].ht:='';
+  menu[1,1].o:=1;
+  menu[1,2].o:=1;
+  menu[1,3].o:=11;
+  menu[1,4].o:=1;
+  menu[1,5].o:=0;
+  menu[2,1].e:='Lautsprecher...';
+  menu[2,2].e:='Drucker';
+  menu[2,3].e:='Datei...';
+  menu[2,4].e:='';
+  menu[2,1].ht:='Hîren einer gewÑhlten Perspektive.';
+  menu[2,2].ht:='Ausgabe aller Perspektiven auf dem Drucker (PRN).';
+  menu[2,3].ht:='Ausgabe aller Perspektiven in eine Datei.';
+  menu[2,4].ht:='';
+  menu[2,1].o:=1;
+  menu[2,2].o:=5;
+  menu[2,3].o:=1;
+  menu[2,4].o:=0;
+  menu[3,1].e:='Reihen Suchen...';
+  menu[3,2].e:='TonlÑnge';
+  menu[3,3].e:='Info';
+  menu[3,4].e:='Ende';
+  menu[3,5].e:='';
+  menu[3,1].ht:='Suchen verwandter Reihen und Schreiben in eine Datei';
+  menu[3,2].ht:='éndern der TonlÑnge';
+  menu[3,3].ht:='Informationen Åber !12Ton';
+  menu[3,4].ht:='Beendet !12Ton';
+  menu[3,5].ht:='';
+  menu[3,1].o:=8;
+  menu[3,1].o:=1;
+  menu[3,1].o:=1;
+  menu[3,1].o:=1;
+  menu[3,1].o:=0;
+  mlmenu[1].e:='Grundreihe';
+  mlmenu[2].e:='Ausgabe';
+  mlmenu[3].e:='Sonstiges';
+  mlmenu[4].e:='';
+  mlmenu[1].o1:=1;
+  mlmenu[2].o1:=1;
+  mlmenu[3].o1:=1;
+  mlmenu[4].o1:=0;
+  mlmenu[1].o2:=34;
+  mlmenu[2].o2:=30;
+  mlmenu[3].o2:=31;
+  mlmenu[4].o2:=0;
+  intinf[0]:='Autor und Inhaber der Urheberrechte:';
+  intinf[1]:='Matthias Kleinmann';
+  intinf[2]:='';
+  intinf[3]:='';
+  intinf[4]:='!12Ton.DAT';
+  intinf[5]:='FÅr MenÅ ALT drÅcken';
+  intinf[6]:='Ich hoffe, ich konnte Ihnen weiterhelfen!';
+  intinf[7]:='';
+  intinf[8]:='';
+  intinf[9]:='';
+  intinf[10]:='';
+  intinf[11]:='';
+  intinf[12]:='';
+  intinf[13]:='Bei Problemen wenden Sie sich bitte an den';
+  intinf[14]:='!12ton.miz';
+  intinf[15]:='1089';
+  intinf[16]:='!12ton.exe';
+  intinf[17]:='60784';
+  dateinam:=intinf[4];
+ {assign(dat,'12TON.MIZ');
  reset(dat);
  assign(dat1, 'file.txt');
  rewrite(dat1);
  vm:=0;hv:=lescodz(dat);
+ 
  repeat
   inc(vm);
   va:=1;menu[vm,va].e:=hv;
@@ -349,32 +423,53 @@ begin
   str(vm, s1); write(dat1, 'vm: '); writeln(dat1, s1);
   str(va, s1); write(dat1, 'va: '); writeln(dat1, s1);
   write(dat1, 'e=hv: '); writeln(dat1, hv);
-  repeat inc(va);hv:=lescodz(dat);menu[vm,va].e:=hv;writeln(dat1, 'menu');str(vm, s1); write(dat1, 'vm: '); writeln(dat1, s1);str(va, s1); write(dat1, 'va: '); writeln(dat1, s1);write(dat1, 'e=hv: '); writeln(dat1, hv);until hv='';
+  repeat inc(va);hv:=lescodz(dat);menu[vm,va].e:=hv;writeln(dat1, 'menu');
+  str(vm, s1); write(dat1, 'vm: '); writeln(dat1, s1);
+  str(va, s1); write(dat1, 'va: '); writeln(dat1, s1);
+  write(dat1, 'e=hv: '); writeln(dat1, hv);until hv='';
   va:=0;
-  repeat inc(va);hv:=lescodz(dat);menu[vm,va].ht:=hv;writeln(dat1, 'menu');str(vm, s1); write(dat1, 'vm: '); writeln(dat1, s1);str(va, s1); write(dat1, 'va: '); writeln(dat1, s1);write(dat1, 'ht=hv: '); writeln(dat1, hv);until hv='';
+  repeat inc(va);hv:=lescodz(dat);menu[vm,va].ht:=hv;writeln(dat1, 'menu');
+  str(vm, s1); write(dat1, 'vm: '); writeln(dat1, s1);
+  str(va, s1); write(dat1, 'va: '); writeln(dat1, s1);
+  write(dat1, 'ht=hv: '); writeln(dat1, hv);until hv='';
   va:=0;
   repeat inc(va);hv:=lescodz(dat);val(hv,p,q);
-         if q=0 then menu[vm,va].o:=p;writeln(dat1, 'menu');str(vm, s1); write(dat1, 'vm: '); writeln(dat1, s1);str(va, s1); write(dat1, 'va: '); writeln(dat1, s1);write(dat1, 'o=val(hv): '); writeln(dat1, hv);until q<>0;
+         if q=0 then menu[vm,va].o:=p;writeln(dat1, 'menu');
+         str(vm, s1); write(dat1, 'vm: '); writeln(dat1, s1);
+         str(va, s1); write(dat1, 'va: '); writeln(dat1, s1);
+         write(dat1, 'o=val(hv): '); writeln(dat1, hv);until q<>0;
  until hv='';
  va:=0;
- repeat inc(va);hv:=lescodz(dat);mlmenu[va].e:=hv;writeln(dat1, 'mlmenu');str(va, s1); write(dat1, 'va: '); writeln(dat1, s1);write(dat1, 'e=val(hv): '); writeln(dat1, hv);until hv='';
+ repeat inc(va);hv:=lescodz(dat);mlmenu[va].e:=hv;writeln(dat1, 'mlmenu');
+ str(va, s1); write(dat1, 'va: '); writeln(dat1, s1);
+ write(dat1, 'e=val(hv): '); writeln(dat1, hv);until hv='';
  va:=0;
  repeat inc(va);hv:=lescodz(dat);val(hv,p,q);
-        if q=0 then mlmenu[va].o1:=p;writeln(dat1, 'mlmenu');str(va, s1); write(dat1, 'va: '); writeln(dat1, s1);write(dat1, 'o1=val(hv): '); writeln(dat1, hv);until q<>0;
+        if q=0 then mlmenu[va].o1:=p;writeln(dat1, 'mlmenu');
+        str(va, s1); write(dat1, 'va: '); writeln(dat1, s1);
+        write(dat1, 'o1=val(hv): '); writeln(dat1, hv);until q<>0;
  va:=0;
  repeat inc(va);hv:=lescodz(dat);val(hv,p,q);
-        if q=0 then mlmenu[va].o2:=p;writeln(dat1, 'mlmenu');str(va, s1); write(dat1, 'va: '); writeln(dat1, s1);write(dat1, 'o2=val(hv): '); writeln(dat1, hv);until q<>0;
+        if q=0 then mlmenu[va].o2:=p;writeln(dat1, 'mlmenu');
+        str(va, s1); write(dat1, 'va: '); writeln(dat1, s1);
+        write(dat1, 'o2=val(hv): '); writeln(dat1, hv);until q<>0;
  for va:=0 to 17 do intinf[va]:=lescodz(dat);
- for va:=0 to 17 do begin writeln(dat1, 'infinf');str(va, s1); write(dat1, 'va: '); writeln(dat1, s1); write(dat1, 'value: '); writeln(dat1, intinf[va]); end;
+ for va:=0 to 17 do
+ begin
+ writeln(dat1, 'intinf');
+ str(va, s1); write(dat1, 'va: ');writeln(dat1, s1);
+ write(dat1, 'value: '); writeln(dat1, intinf[va]);
+ end;
  close(dat);dateinam:=intinf[4];
- close(dat1);
+ close(dat1);}
 { for va:=0 to 1 do begin
   findfirst(intinf[16-va*2],anyfile,sd);
   val(intinf[17-va*2],p,q);
   if(doserror<>0)or(sd.size<>p)then begin
-   writeln('!12TON.MIZ oder !12TON.EXE fehlen bzw. sind verÑndert!');
+   writeln('!12TON.MIZ oder !12TON.EXE fehlen bzw. sind ver"ndert!');
    fehler:=true;exit end;
  end;}
+ 
 {Einlesen der Datei- Infos Ende}
  zeigp[1]:=7;zeigp[2]:=1;zeigp[3]:=10;zeigp[4]:=11;
  zeigp[5]:=2;zeigp[6]:=5;zeigp[7]:=3;zeigp[8]:=6;
@@ -393,7 +488,7 @@ begin
  vm:=vga;va:=vgahi;initgraph(vm,va,'');
  if vm<0 then begin fehler:=true;exit;end;
  setcolor(fv);setbkcolor(fh);setpalette(8,0);
-{OberflÑchengestaltung-Anfang}
+{Oberfl"chengestaltung-Anfang}
  vm:=1;while mlmenu[vm].e<>''do vm:=vm+1;
  rechteck(1,1,634,14);
  for va:=1 to vm-1 do begin
@@ -422,7 +517,7 @@ begin
   outtextxy(5,p*32+50,hv);
  end;
  perspek;
-{OberflÑchengestaltung-Ende}
+{Oberfl"chengestaltung-Ende}
  info
 end;
 
